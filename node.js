@@ -14,14 +14,23 @@ const loadTasks = () => {
     }
 }
 
+
+const listTask = () => {
+    const tasks = loadTasks()
+    tasks.forEach((task,index) => console.log(`${index + 1} - ${task.task}`))     
+}
+
+
+
 function saveTasks(tasks){
     const dataJSON = JSON.stringify(tasks)
-    fs.writeFileSync
+    fs.writeFileSync(filePath, dataJSON)
 }
 const addTask = (task)=> {
     const tasks = loadTasks()
-    tasks.push(tasks)
+    tasks.push({task})
     saveTasks(tasks)
+    console.log("task added" , task)
 }
 
 const command = process.argv[2]
